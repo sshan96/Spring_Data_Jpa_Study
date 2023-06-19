@@ -9,6 +9,7 @@ import study.datajpa.dto.MemberDto;
 import study.datajpa.entity.Member;
 import study.datajpa.entity.Team;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -133,6 +134,22 @@ class MemberRepositoryTest {
         List<MemberDto> usernameList = memberRepository.findMemberDto();
         for (MemberDto memberDto : usernameList) {
             System.out.println("memberDto = " + memberDto);
+        }
+    }
+
+    @Test
+    public void findByNames() {
+        Team team = new Team("teamA");
+        teamRepository.save(team);
+
+        Member m1 = new Member("AAA", 10);
+        m1.setTeam(team);
+        memberRepository.save(m1);
+
+
+        List<Member> usernameList = memberRepository.findByNames(Arrays.asList("AAA","BBB"));
+        for (Member member : usernameList) {
+            System.out.println("member = " + member);
         }
     }
 
