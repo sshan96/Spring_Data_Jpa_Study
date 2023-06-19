@@ -13,6 +13,11 @@ public class MemberJpaRepository {
 
     @PersistenceContext
     private EntityManager em;
+    private final MemberRepository memberRepository;
+
+    public MemberJpaRepository(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     public Member save(Member member) {
         em.persist(member);
@@ -65,4 +70,5 @@ public class MemberJpaRepository {
                 .setParameter("age", age)
                 .getSingleResult();
     }
+
 }
