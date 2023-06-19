@@ -87,5 +87,4 @@ class MemberJpaRepositoryTest {
         assertThat(findMember).isEqualTo(m1);
 
     }
-
 }
